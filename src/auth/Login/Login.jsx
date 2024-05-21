@@ -7,7 +7,7 @@ import Col from 'react-bootstrap/Col';
 import { Link, useNavigate } from 'react-router-dom'
 import './Login.css';
 import userContext from '../hooks/UseContext';
-
+import img from '../../../public/img/hospital.jpg'
 export default function Login() {
 
   const { addUser } = useContext(userContext)
@@ -37,11 +37,11 @@ export default function Login() {
     //osea que estos datos van para el hook
     try {
 
-      const response = await fetch('http://localhost:8000/api/inventario/login/tecnico', {
+      const response = await fetch('http://localhost:8080/api/auth/login/usuario', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'codificado': ''
+          'metasploit': ''
         },
         body: JSON.stringify(formData),
       });
@@ -72,9 +72,10 @@ export default function Login() {
           <title>Login</title>
         </head>
         
-        <body style={{backgroundColor: 'green', backgroundImage:`url()`, height: "100vh", minHeight:'100%' ,backgroundSize:'cover', margin:'0', padding:'0' }}>
+        <body style={{backgroundColor: 'green', backgroundImage:`url(${img})`, height: "100vh", minHeight:'100%' ,backgroundSize:'cover', margin:'0', padding:'0' }}>
           
-        <h1 style={{ textAlign: 'center', fontSize:'100px' }}>Bienvenidos a la INTRANET</h1>
+        <h1 style={{ textAlign: 'center', fontSize:'100px', color:'red' }}>HOSPITAL LAS MALVINAS</h1>
+         <h2 style={{ textAlign: 'center', fontSize:'100px', color:'red' }}>INTRANET</h2>
           <Container className="d-flex justify-content-center align-items-center" style={{ justifyContent: 'center' }}> {/* Utiliza clases de Bootstrap para centrar vertical y horizontalmente */}
             <Row style={{display:'flex', justifyContent:'center'}} >
                 <Form  className="login-form" style={{ borderRadius:'10px',width: '250px',  display: 'block',  textAlign: 'center', marginTop: '100px' }}> {/* Agrega una clase para aplicar estilos personalizados */}

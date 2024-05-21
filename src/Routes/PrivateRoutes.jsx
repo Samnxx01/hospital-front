@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Home from '../componente/Home/Home'
+import Intranet from '../componente/Intranet/Modulo'
 import userContext from '../auth/hooks/UseContext'
 
 export default function PrivateRoute() {
@@ -14,6 +15,7 @@ export default function PrivateRoute() {
     <Routes>
       {/* Use individual Route components */}
       <Route path='/Home' element={<Home />}></Route>
+      <Route path='/Modulo' element={<Intranet />}></Route>
 
 
       <Route path="*" element={<Navigate to="/Home" />} />
