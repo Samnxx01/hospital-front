@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import '../Intranet/Modulo.css'
 import Container from 'react-bootstrap/esm/Container';
+import { useNavigate } from 'react-router-dom';
 
 export default function Modulo() {
   const [formData, setFormData] = useState({
@@ -26,7 +27,7 @@ export default function Modulo() {
   const handleFileChange = (e) => {
     setImagen(e.target.files[0]);
   };
-
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -54,70 +55,15 @@ export default function Modulo() {
         // Redirigir a la página de computadores
       } else {
         console.error('Error en el registro');
-        alert('Error en el registro');
+        alert('Error en el registro de png y jpg e extensiones no permitidas');
       }
     } catch (error) {
       console.error('Error en la solicitud:', error);
     }
   };
-
-  useEffect(() => {
-    const fetchImpresoras = async () => {
-      try {
-        const response = await fetch('http://localhost:8000/api/inventario/listarcompu', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-
-        const data = await response.json();
-
-        // Ensure data has the expected structure and property
-        if (data && data.listarIntranet) {
-          setComputadores(data.listarIntranet);
-        } else {
-          console.error('la api no responde.');
-          // Handle the case where the API data is missing or has an unexpected structure
-        }
-      } catch (error) {
-        console.error('Error fetching impresoras:', error);
-      }
-    };
-
-    fetchImpresoras();
-  }, []);
-
-  useEffect(() => {
-    const obtenerArchivosPDF = async () => {
-      try {
-        const nuevosPDFs = [];
-        const nuevasFaltas = [];
-  
-        for (const archivo of archivosDb) {
-          const id = archivo._id;
-          const response = await fetch(`http://localhost:8000/api/documentos/hospital/ArchivosSubidos/${id}`);
-  
-          if (response.ok) {
-            const pdfBlob = await response.blob();
-            const url = URL.createObjectURL(pdfBlob);
-            nuevosPDFs.push({ url, nombre: archivo.nombre_archivo });
-            nuevasFaltas.push(false);
-          } else {
-            nuevosPDFs.push(null);
-            nuevasFaltas.push(true);
-          }
-        }
-  
-        setPDFURLs(nuevosPDFs);
-        setPDFFaltas(nuevasFaltas);
-      } catch (error) {
-        console.error('Error al obtener los archivos PDF:', error);
-      }
-    };
-  
-    obtenerArchivosPDF();
-  }, [archivosDb]);
+  const enviarDocumentos = () => {
+    navigate('/Listar');
+  };
   
   return (
     <>
@@ -160,8 +106,9 @@ export default function Modulo() {
                   Ingresar
                 </Button>
               </Form>
+              
             </Row>
-
+          <Button onClick={enviarDocumentos}>Aqui puedes ver la visulizacion de las carpeta</Button>
           </Container>
 
         </body>
