@@ -24,8 +24,17 @@ function Narvbar() {
     <>
     <Navbar  expand="lg-expand" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand  href="/Home">INTRANET-HOSPITAL</Navbar.Brand>
-            <Button style={{fontSize:'20px'}} onClick={() =>{
+        
+        <Navbar.Brand href="/Home" >INTRANET-HOSPITAL</Navbar.Brand>
+        
+            <Button           style={{
+            fontSize: '20px',
+            padding: '10px 20px', // Añadimos padding para aumentar el área de clic
+            width: 'auto', // Aseguramos que el botón tenga ancho automático
+            height: 'auto', // Aseguramos que el botón tenga alto automático
+            display: 'block', // Aseguramos que el botón sea un bloque
+            
+          }} onClick={() =>{
               enviarMenu()
               cerrarSesion()
             }}>Cerrar sesion</Button>

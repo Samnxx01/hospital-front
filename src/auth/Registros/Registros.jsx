@@ -13,8 +13,6 @@ export default function Registros() {
   
   const [formData, setFormData] = useState({
     nickname: '',
-    apellido: '',
-    correo: '',
     password: '',
     rol: 'USUARIO',
 });
@@ -84,37 +82,7 @@ const enviarMenu = () => {
                 required
                 placeholder="Nombre del tecnico"
               />
-            </Form.Group>
-
-          <Form.Group className="mb-3" >
-
-            <Form.Label>apellido</Form.Label>
-            <Form.Control
-              type="text"
-              id="apellido"
-              name="apellido"
-              value={formData.apellido}
-              onChange={handleInputChange}
-              required
-              placeholder="Nombre del tecnico"
-            />
-            </Form.Group>
-
-            
-          <Form.Group className="mb-3">
-              <Form.Label>correo</Form.Label>
-              <Form.Control
-                type="email"
-                id="correo"
-                name="correo"
-                autoComplete="email"
-                value={formData.correo}
-                onChange={handleInputChange}
-                required
-                placeholder="Correo electronico"
-              />
-              
-            </Form.Group>
+            </Form.Group>            
 
             <Form.Group className="mb-3">
               <Form.Label>Contraseña</Form.Label>

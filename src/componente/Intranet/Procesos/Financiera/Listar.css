@@ -1,0 +1,20 @@
+.modulo-form {
+    max-width: 400px; /* Ajusta el ancho máximo del formulario según sea necesario */
+    padding: 20px;
+    border: 1px solid #e21d1d;
+    border-radius: 5px;
+    background-color: #27bb69;
+  }
+  
+  .modulo-form label {
+    font-weight: bold;
+  }
+  
+  .modulo-form .form-control {
+    margin-bottom: 15px;
+  }
+  
+  .juan{
+    height: 30px !important; 
+    
+  }

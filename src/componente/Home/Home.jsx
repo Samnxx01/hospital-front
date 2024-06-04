@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup'
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
+import { blue } from '@mui/material/colors';
 
 
 
@@ -22,7 +23,7 @@ export default function Home() {
     const navigate = useNavigate();
 
     const enviarIntranet = () => {
-      navigate('/Modulo');
+      navigate('/Home-secundario');
     };
     
   return (
@@ -33,8 +34,9 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>HOME</title>
     </head>
-    <body style={{backgroundColor:'red', height:"897px"}} >
-        <Narvbar/>
+    <Narvbar/>
+    <body style={{background: 'linear-gradient(to bottom, white, #1FCCDB)', height:"897px"}} >
+        
       <h2 style={{textAlign:'center'}} color='  '><label>MENU DE LA INTRANET</label></h2>
       <div  style={{justifyContent: 'center', textAlign: 'center', display: 'flex', padding: "50px"}} > 
         <Card  variant="top" style={{ width: '300px', justifyItems: 'center', display: 'block', textAlign: 'center', marginRight:"50px"}} >

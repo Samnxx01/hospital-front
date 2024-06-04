@@ -18,7 +18,7 @@ export default function Login() {
 
 
   const [formData, setFormData] = useState({
-    correo: '',
+    nickname: '',
     password: '',
   });
 
@@ -83,14 +83,14 @@ export default function Login() {
                   <Form.Group className="mb-3" >
                     <Form.Label>Usuario</Form.Label>
                     <Form.Control
-                      type="email"
-                      id="correo"
-                      name="correo"
-                      autoComplete="email"
-                      value={formData.correo}
+                      type="text"
+                      id="nickname"
+                      name="nickname"
+                      autoComplete="nickname"
+                      value={formData.nickname}
                       onChange={handleInputChange}
                       required
-                      placeholder="Correo electrónico"
+                      placeholder="usuario"
                     />
                   </Form.Group>
 

@@ -11,8 +11,9 @@ import FileCopyIcon from '@mui/icons-material/FileCopy';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import FolderOpenIcon from '@mui/icons-material/FolderOpen';
-import Calidad from '../Intranet/Listarcalidad'
+import Calidad from './Financiera/Listarcalidad'
 import { useNavigate } from 'react-router-dom';
+import Narvbar from '../../../Narvbar/Narvbar'
 
 const StyledMenu = styled((props) => (
     <Menu
@@ -69,9 +70,24 @@ export default function listarDocumentos() {
         setAnchorEl(null);
     };
     const enviarListar = () => {
-        navigate('/ListarCalidad');
+        navigate('/ListarFinanciero');
     };
-   
+    const enviarListarAdm = () => {
+        navigate('/ListarAdministrativa');
+    };
+    const enviarListarTalen = () => {
+        navigate('/ListarTalento');
+    };
+    const enviarListarTecno = () => {
+        navigate('/ListarTecnologia');
+    };
+    const enviarListarJuri = () => {
+        navigate('/ListarJuridica');
+    };
+
+    
+
+
 
 
     /*  useEffect(() => {
@@ -137,10 +153,12 @@ export default function listarDocumentos() {
                 <head>
                     <meta charset="UTF-8" />
                     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                    <title>Documentos</title>
+                    <title>Financiera</title>
                 </head>
                 <body>
+                <Narvbar/>
                     <h2 style={{ display: 'flex', justifyContent: 'center' }}>Aqui vamos a listar los documentos</h2>
+                  
                     <Button
                         id="demo-customized-button"
                         aria-controls={open ? 'demo-customized-menu' : undefined}
@@ -162,22 +180,25 @@ export default function listarDocumentos() {
                         open={open}
                         onClose={handleClose}
                     >
-                        <MenuItem onClick={handleClose} disableRipple>
+                        <MenuItem onClick={enviarListar} disableRipple>
                             <FolderOpenIcon onClick={enviarListar} />
-                            Calidad
+                            Gestion Financiera
                         </MenuItem>
-                        <MenuItem onClick={handleClose} disableRipple>
-                            <FileCopyIcon />
-                            Duplicate
+                        <MenuItem onClick={enviarListarAdm} disableRipple>
+                            <FolderOpenIcon onClick={enviarListar} />
+                           Gestion Adminsitrativa
                         </MenuItem>
-                        <Divider sx={{ my: 0.5 }} />
-                        <MenuItem onClick={handleClose} disableRipple>
-                            <ArchiveIcon />
-                            Archive
+                        <MenuItem onClick={enviarListarTalen} disableRipple>
+                            <FolderOpenIcon onClick={enviarListar} />
+                           Gestion Talento Humano
                         </MenuItem>
-                        <MenuItem onClick={handleClose} disableRipple>
-                            <MoreHorizIcon />
-                            More
+                        <MenuItem onClick={enviarListarTecno} disableRipple>
+                            <FolderOpenIcon onClick={enviarListar} />
+                           Gestion Tecnologia e informacion
+                        </MenuItem>
+                        <MenuItem onClick={enviarListarJuri } disableRipple>
+                            <FolderOpenIcon onClick={enviarListar} />
+                           Gestion Juridica
                         </MenuItem>
                     </StyledMenu>
 

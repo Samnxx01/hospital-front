@@ -1,3 +1,4 @@
+import React from 'react'
 import React, { useState, useEffect, useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
@@ -8,77 +9,74 @@ import Container from 'react-bootstrap/esm/Container';
 import { useNavigate } from 'react-router-dom';
 import Narvbar from '../../Narvbar/Narvbar';
 
+export default function ModulSecundario() {
 
-
-
-export default function Modulo() {
-  const [formData, setFormData] = useState({
-    nombre_archivo: '',
-    archivo: '',
-    descripcion: ''
-  });
-
-
-  const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const [imagen, setImagen] = useState(null);
-
-  const handleFileChange = (e) => {
-    setImagen(e.target.files[0]);
-  };
-  const navigate = useNavigate();
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (!imagen) {
-      console.error('No hay archivo para subir');
-      return;
-    }
-
-    const formDataToSend = new FormData();
-    for (const key in formData) {
-      formDataToSend.append(key, formData[key]);
-    }
-    formDataToSend.append('imagen', imagen);
-
-    try {
-      const response = await fetch('http://localhost:8080/api/documentos/guardararchivos', {
-        method: 'POST',
-        body: formDataToSend,
+    const [formData, setFormData] = useState({
+        nombre_archivo: '',
+        archivo: '',
+        descripcion: ''
       });
-      console.log(formDataToSend)
-
-      if (response.ok) {
-        alert('¡Registro exitoso!');
-        // Redirigir a la página de computadores
-      } else {
-        console.error('Error en el registro');
-        alert('Error en el registro de png y jpg e extensiones no permitidas');
-      }
-    } catch (error) {
-      console.error('Error en la solicitud:', error);
-    }
-  };
-  const enviarDocumentos = () => {
-    navigate('/Listar');
-  };
-  
+    
+    
+      const handleInputChange = (e) => {
+        setFormData({
+          ...formData,
+          [e.target.name]: e.target.value,
+        });
+      };
+    
+      const [imagen, setImagen] = useState(null);
+    
+      const handleFileChange = (e) => {
+        setImagen(e.target.files[0]);
+      };
+      const navigate = useNavigate();
+    
+      const handleSubmit = async (e) => {
+        e.preventDefault();
+    
+        if (!imagen) {
+          console.error('No hay archivo para subir');
+          return;
+        }
+    
+        const formDataToSend = new FormData();
+        for (const key in formData) {
+          formDataToSend.append(key, formData[key]);
+        }
+        formDataToSend.append('imagen', imagen);
+    
+        try {
+          const response = await fetch('http://localhost:8080/api/documentos/guardararchivos', {
+            method: 'POST',
+            body: formDataToSend,
+          });
+          console.log(formDataToSend)
+    
+          if (response.ok) {
+            alert('¡Registro exitoso!');
+            // Redirigir a la página de computadores
+          } else {
+            console.error('Error en el registro');
+            alert('Error en el registro de png y jpg e extensiones no permitidas');
+          }
+        } catch (error) {
+          console.error('Error en la solicitud:', error);
+        }
+      };
+      const enviarDocumentos = () => {
+        navigate('/Listar');
+      };
   return (
     <>
-      <html lang="en">
-        <head>
-          <meta charset="UTF-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <title>Intranet</title>
-        </head>
-        <body >
-        <Narvbar/>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Misionales</title>
+    </head>
+    <body>
+    <Narvbar/>
           <Container className="d-flex justify-content-center align-items-center" style={{ justifyContent: 'center' }}>
             <Row style={{ display: 'flex', justifyContent: 'center' }}>
               <h1 style={{ display: 'flex', justifyContent: 'center' }} >Aqui se carga el archivo</h1>
@@ -116,8 +114,8 @@ export default function Modulo() {
           <Button onClick={enviarDocumentos}>Aqui puedes ver la visulizacion de las carpeta</Button>
           </Container>
 
-        </body>
-      </html>
+    </body>
+    </html>
     </>
   )
 }
