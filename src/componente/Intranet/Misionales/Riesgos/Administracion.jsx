@@ -14,7 +14,7 @@ import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/esm/Container';
 
 
-export default function Listar() {
+export default function Administracion() {
     const [listarDocumentos, setListarDocumentos] = useState([]);
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
@@ -160,7 +160,7 @@ export default function Listar() {
                 <head>
                     <meta charset="UTF-8" />
                     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                    <title>Juridica</title>
+                    <title>Riesgo</title>
                 </head>
                 <body>
                     <Container className="d-flex justify-content-center align-items-center" style={{ justifyContent: 'center' }}>

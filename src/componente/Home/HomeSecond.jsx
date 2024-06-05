@@ -21,18 +21,13 @@ export default function HomeSecond() {
       const enviarIntranet = () => {
         navigate('/Listar');
       };
-      const enviarTalentoHu = () => {
-        navigate('/Modulo');
+      const enviarProcesos = () => {
+        navigate('/Home-terciario');
       };
-      const enviarGestionTec = () => {
-        navigate('/Modulo');
+      const enviarGestionGerenciales = () => {
+        navigate('/Home-cuarto');
       };
-      const enviarGestionAdm = () => {
-        navigate('/Modulo');
-      };
-      const enviarGestionFi = () => {
-        navigate('/Modulo');
-      }
+
     return (
         <>
             <html lang="en">
@@ -63,7 +58,7 @@ export default function HomeSecond() {
                                 <Card.Title style={{ marginTop: '40px' }}>CARPETA DE PROCESOS MISIONALES</Card.Title>
                             </Card.Body>
                             <Card.Body>
-                                <Button style={{ height: '70px', marginTop: '70px' }} onClick={enviarIntranet}>Ingrese al modulo</Button>
+                                <Button style={{ height: '70px', marginTop: '70px' }} onClick={enviarProcesos}>Ingrese al modulo</Button>
                             </Card.Body>
                         </Card>
                         <Card variant="top" style={{ width: '300px', justifyItems: 'center', display: 'block', textAlign: 'center', marginRight: "50px" }} >
@@ -73,7 +68,7 @@ export default function HomeSecond() {
                                 <Card.Title style={{ marginTop: '40px' }}>CARPETA PROCESOS GERENCIALES</Card.Title>
                             </Card.Body>
                             <Card.Body>
-                                <Button style={{ height: '70px', marginTop: '70px' }} onClick={enviarIntranet}>Ingrese al modulo</Button>
+                                <Button style={{ height: '70px', marginTop: '70px' }} onClick={enviarGestionGerenciales}>Ingrese al modulo</Button>
                             </Card.Body>
                         </Card>
 

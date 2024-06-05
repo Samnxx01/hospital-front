@@ -11,9 +11,9 @@ import FileCopyIcon from '@mui/icons-material/FileCopy';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import FolderOpenIcon from '@mui/icons-material/FolderOpen';
-import Calidad from './Financiera/Listar'
 import { useNavigate } from 'react-router-dom';
 import Narvbar from '../../../Narvbar/Narvbar'
+
 
 const StyledMenu = styled((props) => (
     <Menu
@@ -56,10 +56,7 @@ const StyledMenu = styled((props) => (
     },
 }));
 
-
-
-export default function listarDocumentos() {
-
+export default function HomeThird() {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const navigate = useNavigate();
@@ -69,96 +66,30 @@ export default function listarDocumentos() {
     const handleClose = () => {
         setAnchorEl(null);
     };
-    const enviarListar = () => {
-        navigate('/ListarFinanciero');
+    const enviarListarAtencion = () => {
+        navigate('/Atencion');
     };
-    const enviarListarAdm = () => {
-        navigate('/ListarAdministrativa');
+    const enviarListarPlane = () => {
+        navigate('/Planeacion');
     };
-    const enviarListarTalen = () => {
-        navigate('/ListarTalento');
+    const enviarListarCalid = () => {
+        navigate('/Calidad');
     };
-    const enviarListarTecno = () => {
-        navigate('/ListarTecnologia');
+    const enviarListarMerca = () => {
+        navigate('/Mercadeo');
     };
-    const enviarListarJuri = () => {
-        navigate('/ListarJuridica');
-    };
-
-    
-
-
-
-
-    /*  useEffect(() => {
-        const fetchImpresoras = async () => {
-          try {
-            const response = await fetch('http://localhost:8000/api/inventario/listarcompu', {
-              method: 'GET',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-            });
-    
-            const data = await response.json();
-    
-            // Ensure data has the expected structure and property
-            if (data && data.listarIntranet) {
-              setComputadores(data.listarIntranet);
-            } else {
-              console.error('la api no responde.');
-              // Handle the case where the API data is missing or has an unexpected structure
-            }
-          } catch (error) {
-            console.error('Error fetching impresoras:', error);
-          }
-        };
-    
-        fetchImpresoras();
-      }, []);
-    
-      useEffect(() => {
-        const obtenerArchivosPDF = async () => {
-          try {
-            const nuevosPDFs = [];
-            const nuevasFaltas = [];
-      
-            for (const archivo of archivosDb) {
-              const id = archivo._id;
-              const response = await fetch(`http://localhost:8000/api/documentos/hospital/ArchivosSubidos/${id}`);
-      
-              if (response.ok) {
-                const pdfBlob = await response.blob();
-                const url = URL.createObjectURL(pdfBlob);
-                nuevosPDFs.push({ url, nombre: archivo.nombre_archivo });
-                nuevasFaltas.push(false);
-              } else {
-                nuevosPDFs.push(null);
-                nuevasFaltas.push(true);
-              }
-            }
-      
-            setPDFURLs(nuevosPDFs);
-            setPDFFaltas(nuevasFaltas);
-          } catch (error) {
-            console.error('Error al obtener los archivos PDF:', error);
-          }
-        };
-      
-        obtenerArchivosPDF();
-      }, [archivosDb]);*/
     return (
         <>
             <html lang="en">
                 <head>
                     <meta charset="UTF-8" />
                     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                    <title>Financiera</title>
+                    <title>Gerenciales</title>
                 </head>
                 <body>
-                <Narvbar/>
+                    <Narvbar />
                     <h2 style={{ display: 'flex', justifyContent: 'center' }}>Listando las carpetas</h2>
-                  
+
                     <Button
                         id="demo-customized-button"
                         aria-controls={open ? 'demo-customized-menu' : undefined}
@@ -180,31 +111,26 @@ export default function listarDocumentos() {
                         open={open}
                         onClose={handleClose}
                     >
-                        <MenuItem onClick={enviarListar} disableRipple>
-                            <FolderOpenIcon onClick={enviarListar} />
-                            Gestion Financiera
+                        <MenuItem onClick={enviarListarMerca} disableRipple>
+                            <FolderOpenIcon onClick={enviarListarMerca} />
+                            Gestion Direccionamiento y mercadeo
                         </MenuItem>
-                        <MenuItem onClick={enviarListarAdm} disableRipple>
-                            <FolderOpenIcon onClick={enviarListar} />
-                           Gestion Adminsitrativa
+                        <MenuItem onClick={enviarListarCalid} disableRipple>
+                            <FolderOpenIcon onClick={enviarListarCalid} />
+                            Gestion de calidad
                         </MenuItem>
-                        <MenuItem onClick={enviarListarTalen} disableRipple>
-                            <FolderOpenIcon onClick={enviarListar} />
-                           Gestion Talento Humano
+                        <MenuItem onClick={enviarListarPlane} disableRipple>
+                            <FolderOpenIcon onClick={enviarListarPlane} />
+                            Gestion planeacion
                         </MenuItem>
-                        <MenuItem onClick={enviarListarTecno} disableRipple>
-                            <FolderOpenIcon onClick={enviarListar} />
-                           Gestion Tecnologia e informacion
-                        </MenuItem>
-                        <MenuItem onClick={enviarListarJuri } disableRipple>
-                            <FolderOpenIcon onClick={enviarListar} />
-                           Gestion Juridica
+                        <MenuItem onClick={enviarListarAtencion} disableRipple>
+                            <FolderOpenIcon onClick={enviarListarAtencion} />
+                            Gestion Atencion al usuario
                         </MenuItem>
                     </StyledMenu>
 
                 </body>
             </html>
-
         </>
     )
 }

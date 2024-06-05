@@ -17,26 +17,26 @@ import '../Financiera/Listar.css'
 
 export default function Listarcalidad() {
 
-    
+
     const [listarDocumentos, setListarDocumentos] = useState([]);
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         nombre_archivo: '',
         archivo: '',
         descripcion: ''
-      });
-    
-      const [imagen, setImagen] = useState(null);
+    });
 
-  const handleFileChange = (e) => {
-    setImagen(e.target.files[0]);
-  };
-      const handleInputChange = (e) => {
+    const [imagen, setImagen] = useState(null);
+
+    const handleFileChange = (e) => {
+        setImagen(e.target.files[0]);
+    };
+    const handleInputChange = (e) => {
         setFormData({
-          ...formData,
-          [e.target.name]: e.target.value,
+            ...formData,
+            [e.target.name]: e.target.value,
         });
-      };
+    };
 
 
     console.log(listarDocumentos)
@@ -69,42 +69,42 @@ export default function Listarcalidad() {
     }, []);
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
+
         if (!imagen) {
-          console.error('No hay archivo para subir');
-          return;
+            console.error('No hay archivo para subir');
+            return;
         }
-    
+
         const formDataToSend = new FormData();
         for (const key in formData) {
-          formDataToSend.append(key, formData[key]);
+            formDataToSend.append(key, formData[key]);
         }
         formDataToSend.append('imagen', imagen);
-    
+
         try {
-          const response = await fetch('http://localhost:8080/api/documentos/guardararchivos', {
-            method: 'POST',
-            body: formDataToSend,
-          });
-          console.log(formDataToSend)
-    
-          if (response.ok) {
-            alert('¡Registro exitoso!');
-            // Redirigir a la página de computadores
-          } else {
-            console.error('Error en el registro');
-            alert('Error en el registro de png y jpg e extensiones no permitidas');
-          }
+            const response = await fetch('http://localhost:8080/api/documentos/guardararchivos', {
+                method: 'POST',
+                body: formDataToSend,
+            });
+            console.log(formDataToSend)
+
+            if (response.ok) {
+                alert('¡Registro exitoso!');
+                // Redirigir a la página de computadores
+            } else {
+                console.error('Error en el registro');
+                alert('Error en el registro de png y jpg e extensiones no permitidas');
+            }
         } catch (error) {
-          console.error('Error en la solicitud:', error);
+            console.error('Error en la solicitud:', error);
         }
-      };
+    };
 
     const [imagenURLs, setImagenURLs] = useState([]);
     const [imagenFaltas, setImagenFaltas] = useState([]);
     const [listarPDF, setlistarPDF] = useState([]);
     console.log(listarPDF)
-      
+
 
     useEffect(() => {
         const obtenerImagenes = async () => {

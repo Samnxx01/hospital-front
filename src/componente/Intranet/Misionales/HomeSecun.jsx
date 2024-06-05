@@ -11,7 +11,6 @@ import FileCopyIcon from '@mui/icons-material/FileCopy';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import FolderOpenIcon from '@mui/icons-material/FolderOpen';
-import Calidad from './Financiera/Listar'
 import { useNavigate } from 'react-router-dom';
 import Narvbar from '../../../Narvbar/Narvbar'
 
@@ -57,8 +56,7 @@ const StyledMenu = styled((props) => (
 }));
 
 
-
-export default function listarDocumentos() {
+function ProcesosMi() {
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -70,95 +68,38 @@ export default function listarDocumentos() {
         setAnchorEl(null);
     };
     const enviarListar = () => {
-        navigate('/ListarFinanciero');
+        navigate('/Asistencial');
     };
     const enviarListarAdm = () => {
-        navigate('/ListarAdministrativa');
+        navigate('/Hospitalizacion');
     };
     const enviarListarTalen = () => {
-        navigate('/ListarTalento');
+        navigate('/Urgencias');
     };
     const enviarListarTecno = () => {
-        navigate('/ListarTecnologia');
+        navigate('/Promocion');
     };
-    const enviarListarJuri = () => {
-        navigate('/ListarJuridica');
+    const enviarListarTerapia = () => {
+        navigate('/Terapia');
+    };
+    const enviarListarRiesgo = () => {
+        navigate('/Riesgo');
     };
 
-    
 
-
-
-
-    /*  useEffect(() => {
-        const fetchImpresoras = async () => {
-          try {
-            const response = await fetch('http://localhost:8000/api/inventario/listarcompu', {
-              method: 'GET',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-            });
-    
-            const data = await response.json();
-    
-            // Ensure data has the expected structure and property
-            if (data && data.listarIntranet) {
-              setComputadores(data.listarIntranet);
-            } else {
-              console.error('la api no responde.');
-              // Handle the case where the API data is missing or has an unexpected structure
-            }
-          } catch (error) {
-            console.error('Error fetching impresoras:', error);
-          }
-        };
-    
-        fetchImpresoras();
-      }, []);
-    
-      useEffect(() => {
-        const obtenerArchivosPDF = async () => {
-          try {
-            const nuevosPDFs = [];
-            const nuevasFaltas = [];
-      
-            for (const archivo of archivosDb) {
-              const id = archivo._id;
-              const response = await fetch(`http://localhost:8000/api/documentos/hospital/ArchivosSubidos/${id}`);
-      
-              if (response.ok) {
-                const pdfBlob = await response.blob();
-                const url = URL.createObjectURL(pdfBlob);
-                nuevosPDFs.push({ url, nombre: archivo.nombre_archivo });
-                nuevasFaltas.push(false);
-              } else {
-                nuevosPDFs.push(null);
-                nuevasFaltas.push(true);
-              }
-            }
-      
-            setPDFURLs(nuevosPDFs);
-            setPDFFaltas(nuevasFaltas);
-          } catch (error) {
-            console.error('Error al obtener los archivos PDF:', error);
-          }
-        };
-      
-        obtenerArchivosPDF();
-      }, [archivosDb]);*/
     return (
         <>
+
             <html lang="en">
                 <head>
                     <meta charset="UTF-8" />
                     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                    <title>Financiera</title>
+                    <title>Misionales</title>
                 </head>
                 <body>
-                <Narvbar/>
+                    <Narvbar />
                     <h2 style={{ display: 'flex', justifyContent: 'center' }}>Listando las carpetas</h2>
-                  
+
                     <Button
                         id="demo-customized-button"
                         aria-controls={open ? 'demo-customized-menu' : undefined}
@@ -182,29 +123,34 @@ export default function listarDocumentos() {
                     >
                         <MenuItem onClick={enviarListar} disableRipple>
                             <FolderOpenIcon onClick={enviarListar} />
-                            Gestion Financiera
+                            Gestion Asistencial Ambulatorio
                         </MenuItem>
                         <MenuItem onClick={enviarListarAdm} disableRipple>
-                            <FolderOpenIcon onClick={enviarListar} />
-                           Gestion Adminsitrativa
+                            <FolderOpenIcon onClick={enviarListarAdm} />
+                            Gestion Hospitalizacion y partos
                         </MenuItem>
                         <MenuItem onClick={enviarListarTalen} disableRipple>
-                            <FolderOpenIcon onClick={enviarListar} />
-                           Gestion Talento Humano
+                            <FolderOpenIcon onClick={enviarListarTalen} />
+                            Gestion de urgencias
                         </MenuItem>
                         <MenuItem onClick={enviarListarTecno} disableRipple>
-                            <FolderOpenIcon onClick={enviarListar} />
-                           Gestion Tecnologia e informacion
+                            <FolderOpenIcon onClick={enviarListarTecno} />
+                            Gestion promocion y prevencion
                         </MenuItem>
-                        <MenuItem onClick={enviarListarJuri } disableRipple>
-                            <FolderOpenIcon onClick={enviarListar} />
-                           Gestion Juridica
+                        <MenuItem onClick={enviarListarTerapia} disableRipple>
+                            <FolderOpenIcon onClick={enviarListarTerapia} />
+                            Gestion de ayudas diagnostico y terapautica
+                        </MenuItem>
+                        <MenuItem onClick={enviarListarRiesgo} disableRipple>
+                            <FolderOpenIcon onClick={enviarListarRiesgo} />
+                            Gestion administracion del riesgo
                         </MenuItem>
                     </StyledMenu>
 
                 </body>
             </html>
-
         </>
     )
 }
+
+export default ProcesosMi
