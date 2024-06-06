@@ -44,7 +44,7 @@ export default function Listarcalidad() {
     useEffect(() => {
         const fetchCalidad = async () => {
             try {
-                const response = await fetch('http://localhost:8080/api/documentos/listararchivos', {
+                const response = await fetch('http://localhost:8080/api/documentos/financiera/listararchivos', {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -53,9 +53,9 @@ export default function Listarcalidad() {
 
                 const data = await response.json();
                 // Ensure data has the expected structure and property
-                if (data && data.listarIntranet) {
-                    setlistarPDF(data.listarIntranet);
-                    setListarDocumentos(data.listarIntranet);
+                if (data && data.listarFinanciera) {
+                    setlistarPDF(data.listarFinanciera);
+                    setListarDocumentos(data.listarFinanciera);
                 } else {
                     console.error('la api no responde.');
                     // Handle the case where the API data is missing or has an unexpected structure
@@ -82,7 +82,7 @@ export default function Listarcalidad() {
         formDataToSend.append('imagen', imagen);
 
         try {
-            const response = await fetch('http://localhost:8080/api/documentos/guardararchivos', {
+            const response = await fetch('http://localhost:8080/api/documentos/financiera/guardararchivos', {
                 method: 'POST',
                 body: formDataToSend,
             });

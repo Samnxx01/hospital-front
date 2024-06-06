@@ -41,7 +41,7 @@ export default function Atecion() {
   useEffect(() => {
     const fetchCalidad = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/documentos/listararchivos', {
+        const response = await fetch('http://localhost:8080/api/documentos/atencion/listararchivos', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ export default function Atecion() {
     formDataToSend.append('imagen', imagen);
 
     try {
-      const response = await fetch('http://localhost:8080/api/documentos/guardararchivos', {
+      const response = await fetch('http://localhost:8080/api/documentos/atencion/guardararchivos', {
         method: 'POST',
         body: formDataToSend,
       });

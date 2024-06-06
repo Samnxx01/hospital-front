@@ -40,7 +40,7 @@ export default function Calidad() {
   useEffect(() => {
     const fetchCalidad = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/documentos/listararchivos', {
+        const response = await fetch('http://localhost:8080/api/documentos/calidad/listararchivos', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -49,9 +49,9 @@ export default function Calidad() {
 
         const data = await response.json();
         // Ensure data has the expected structure and property
-        if (data && data.listarIntranet) {
-          setlistarPDF(data.listarIntranet);
-          setListarDocumentos(data.listarIntranet);
+        if (data && data.listarCalidad) {
+          setlistarPDF(data.listarCalidad);
+          setListarDocumentos(data.listarCalidad);
         } else {
           console.error('la api no responde.');
           // Handle the case where the API data is missing or has an unexpected structure
@@ -78,7 +78,7 @@ export default function Calidad() {
     formDataToSend.append('imagen', imagen);
 
     try {
-      const response = await fetch('http://localhost:8080/api/documentos/guardararchivos', {
+      const response = await fetch('http://localhost:8080/api/documentos/calidad  /guardararchivos', {
         method: 'POST',
         body: formDataToSend,
       });

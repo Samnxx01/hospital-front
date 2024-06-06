@@ -42,7 +42,7 @@ export default function Prevencion() {
   useEffect(() => {
     const fetchCalidad = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/documentos/listararchivos', {
+        const response = await fetch('http://localhost:8080/api/documentos/promocion/listararchivos', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -51,9 +51,9 @@ export default function Prevencion() {
 
         const data = await response.json();
         // Ensure data has the expected structure and property
-        if (data && data.listarIntranet) {
-          setlistarPDF(data.listarIntranet);
-          setListarDocumentos(data.listarIntranet);
+        if (data && data.listarPromocion) {
+          setlistarPDF(data.listarPromocion);
+          setListarDocumentos(data.listarPromocion);
         } else {
           console.error('la api no responde.');
           // Handle the case where the API data is missing or has an unexpected structure
@@ -80,7 +80,7 @@ export default function Prevencion() {
     formDataToSend.append('imagen', imagen);
 
     try {
-      const response = await fetch('http://localhost:8080/api/documentos/guardararchivos', {
+      const response = await fetch('http://localhost:8080/api/documentos/promocion/guardararchivos', {
         method: 'POST',
         body: formDataToSend,
       });

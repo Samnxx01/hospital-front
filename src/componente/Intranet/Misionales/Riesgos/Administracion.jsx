@@ -41,7 +41,7 @@ export default function Administracion() {
     useEffect(() => {
         const fetchCalidad = async () => {
             try {
-                const response = await fetch('http://localhost:8080/api/documentos/listararchivos', {
+                const response = await fetch('http://localhost:8080/api/documentos/riesgos/listararchivos', {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -50,9 +50,9 @@ export default function Administracion() {
 
                 const data = await response.json();
                 // Ensure data has the expected structure and property
-                if (data && data.listarIntranet) {
-                    setlistarPDF(data.listarIntranet);
-                    setListarDocumentos(data.listarIntranet);
+                if (data && data.listarRiesgos) {
+                    setlistarPDF(data.listarRiesgos);
+                    setListarDocumentos(data.listarRiesgos);
                 } else {
                     console.error('la api no responde.');
                     // Handle the case where the API data is missing or has an unexpected structure
@@ -79,7 +79,7 @@ export default function Administracion() {
         formDataToSend.append('imagen', imagen);
 
         try {
-            const response = await fetch('http://localhost:8080/api/documentos/guardararchivos', {
+            const response = await fetch('http://localhost:8080/api/documentos/riesgos/guardararchivos', {
                 method: 'POST',
                 body: formDataToSend,
             });

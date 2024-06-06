@@ -40,7 +40,7 @@ export default function Mercadeo() {
   useEffect(() => {
     const fetchCalidad = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/documentos/listararchivos', {
+        const response = await fetch('http://localhost:8080/api/documentos/mercadeo/listararchivos', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -49,9 +49,9 @@ export default function Mercadeo() {
 
         const data = await response.json();
         // Ensure data has the expected structure and property
-        if (data && data.listarIntranet) {
-          setlistarPDF(data.listarIntranet);
-          setListarDocumentos(data.listarIntranet);
+        if (data && data.listarMercadeo) {
+          setlistarPDF(data.listarMercadeo);
+          setListarDocumentos(data.listarMercadeo);
         } else {
           console.error('la api no responde.');
           // Handle the case where the API data is missing or has an unexpected structure
@@ -78,7 +78,7 @@ export default function Mercadeo() {
     formDataToSend.append('imagen', imagen);
 
     try {
-      const response = await fetch('http://localhost:8080/api/documentos/guardararchivos', {
+      const response = await fetch('http://localhost:8080/api/documentos/mercadeo/guardararchivos', {
         method: 'POST',
         body: formDataToSend,
       });

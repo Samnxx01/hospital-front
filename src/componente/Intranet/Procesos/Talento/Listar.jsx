@@ -42,7 +42,7 @@ export default function Listar() {
     useEffect(() => {
         const fetchCalidad = async () => {
             try {
-                const response = await fetch('http://localhost:8080/api/documentos/listararchivos', {
+                const response = await fetch('http://localhost:8080/api/documentos/talento/listararchivos', {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -51,9 +51,9 @@ export default function Listar() {
 
                 const data = await response.json();
                 // Ensure data has the expected structure and property
-                if (data && data.listarIntranet) {
-                    setlistarPDF(data.listarIntranet);
-                    setListarDocumentos(data.listarIntranet);
+                if (data && data.listarTalento) {
+                    setlistarPDF(data.listarTalento);
+                    setListarDocumentos(data.listarTalento);
                 } else {
                     console.error('la api no responde.');
                     // Handle the case where the API data is missing or has an unexpected structure
@@ -80,7 +80,7 @@ export default function Listar() {
         formDataToSend.append('imagen', imagen);
 
         try {
-            const response = await fetch('http://localhost:8080/api/documentos/guardararchivos', {
+            const response = await fetch('http://localhost:8080/api/documentos/talento/guardararchivos', {
                 method: 'POST',
                 body: formDataToSend,
             });

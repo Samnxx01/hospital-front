@@ -41,7 +41,7 @@ export default function AsisAmb() {
   useEffect(() => {
     const fetchCalidad = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/documentos/listararchivos', {
+        const response = await fetch('http://localhost:8080/api/documentos/asistencial/listararchivos', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -50,9 +50,9 @@ export default function AsisAmb() {
 
         const data = await response.json();
         // Ensure data has the expected structure and property
-        if (data && data.listarIntranet) {
-          setlistarPDF(data.listarIntranet);
-          setListarDocumentos(data.listarIntranet);
+        if (data && data.listarAsistencial) {
+          setlistarPDF(data.listarAsistencial);
+          setListarDocumentos(data.listarAsistencial);
         } else {
           console.error('la api no responde.');
           // Handle the case where the API data is missing or has an unexpected structure
@@ -79,7 +79,7 @@ export default function AsisAmb() {
     formDataToSend.append('imagen', imagen);
 
     try {
-      const response = await fetch('http://localhost:8080/api/documentos/guardararchivos', {
+      const response = await fetch('http://localhost:8080/api/documentos/asistencial/guardararchivos', {
         method: 'POST',
         body: formDataToSend,
       });
